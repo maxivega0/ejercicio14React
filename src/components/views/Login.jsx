@@ -6,10 +6,6 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setUsuarioLogueado }) => {
-  // Declaramos el hook use form
-  // register = lugar de la libreria donde vamos a guardar el input de mail y password
-  // objeto de errores mostrara las partes del formulario que no completo o son invalidas
-  // reset metodo de libreria para reiniciar los datos del formulario
   const {
     register,
     handleSubmit,
@@ -20,13 +16,10 @@ const Login = ({ setUsuarioLogueado }) => {
 
   const onSubmit = (usuario) => {
     console.log(usuario);
-    // then implica lo siguiente: yo ejecutare una funcion, una vez que se ejecute iniciar sesion, espera que se ejecute y entonces, realiza lo siguiente
-    // respuesta es una variable inventada que va a contener el return de "inciarSesion"
     iniciarSesion(usuario).then((respuesta) => {
       if (respuesta) {
         console.log("aqui esta todo bien con el usuario");
         sessionStorage.setItem("usuario", JSON.stringify(respuesta));
-        // actualzar state de app
         setUsuarioLogueado(respuesta);
         Swal.fire(
           "Sesion iniciada con exito!",
@@ -34,7 +27,6 @@ const Login = ({ setUsuarioLogueado }) => {
           "success"
         );
         reset();
-        // usenavigate nos direcciona a la pagina del adminstrador
         navegacion("/administrador");
       } else {
         Swal.fire("Error!", "El emal o password son incorrectos.", "error");
@@ -53,10 +45,8 @@ const Login = ({ setUsuarioLogueado }) => {
               <Form.Control
                 type="email"
                 placeholder="Ingrese un email"
-                // operador spread, asi invocamos al objeto register
                 {...register("email", {
                   required: "El email es un dato obligatorio",
-                  // expresion regular
                   pattern: {
                     value:
                       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=? ^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a -z0-9](?:[a-z0-9-]*[a-z0-9])?$/,

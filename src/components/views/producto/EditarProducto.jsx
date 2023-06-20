@@ -13,8 +13,6 @@ const EditarProducto = () => {
     reset,
     setValue
   } = useForm();
-
-  // Extra de la url el parametro
   const {id} = useParams();
 
   useEffect(() => {
@@ -31,8 +29,6 @@ const EditarProducto = () => {
 
   const onSubmit = (editarProducto) => {
     console.log(editarProducto);
-    // then implica lo siguiente: yo ejecutare una funcion, una vez que se ejecute iniciar sesion, espera que se ejecute y entonces, realiza lo siguiente
-    // respuesta es una variable inventada que va a contener el return de "inciarSesion"
     Swal.fire("Producto editado correctamente!", "", "success");
     reset();
   };
@@ -49,7 +45,6 @@ const EditarProducto = () => {
             placeholder="Ej: Cafe"
             {...register("nombreProducto", {
               required: "El nombre del producto es un dato obligatorio",
-              // expresion regular
               pattern: {
                 value: /^[a-zA-Z\s]{2,32}$/,
                 message: `El nombre del producto debe contener entre 2 y 32 caracteres, no admite numeros y caracteres especiales`,
@@ -68,7 +63,6 @@ const EditarProducto = () => {
             placeholder="Ej: 50"
             {...register("precio", {
               required: "El precio del producto es un dato obligatorio",
-              // expresion regular
               pattern: {
                 value: /^\d{1,32}(\.\d+)?$/,
                 message: `El precio solo admite numeros y decimales, entre 1 y 32 caracteres`,
@@ -87,7 +81,6 @@ const EditarProducto = () => {
             placeholder="Ej: https://www.pexels.com/es-es/vans-en-blanco-y-negro-fuera-de-la-decoracion-para-colgar-en-la-pared-1230679/"
             {...register("imagen", {
               required: "La URL de imagen es un campo obligatorio",
-              // expresion regular
               pattern: {
                 value: /^https?:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$/,
                 message: `La URL debe comenzar con "http://" o "https://", seguido de un dominio válido y una ruta opcional.`,
@@ -104,7 +97,6 @@ const EditarProducto = () => {
           <Form.Select
             {...register("categoria", {
               required: "Seleccionar una categoria es un campo obligatorio"
-              // expresion regular
             })}
           >
             <option value="">Seleccione una opcion</option>

@@ -10,7 +10,6 @@ const Administrador = () => {
   const [productos, SetProductos] = useState([]);
 
   useEffect(() => {
-    //consultar a la api y guardar la respuesta en el state
     obtenerListaProductos().then((respuesta) => {
       //todo: preguntar si la respuesta tiene
       if (respuesta) {

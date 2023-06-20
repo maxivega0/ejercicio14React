@@ -15,8 +15,6 @@ const Registro = () => {
 
   const onSubmit = (registroUsuario) => {
     console.log(registroUsuario);
-    // then implica lo siguiente: yo ejecutare una funcion, una vez que se ejecute iniciar sesion, espera que se ejecute y entonces, realiza lo siguiente
-    // respuesta es una variable inventada que va a contener el return de "inciarSesion"
     Swal.fire(
       "Usuario creado correctamente",
       "Inicie sesion para disfrutar.",
@@ -37,7 +35,6 @@ const Registro = () => {
                 placeholder="Ingrese un nombre de usuario"
                 {...register("nombreUsuario", {
                   required: "El nombre de usuario es un dato obligatorio",
-                  // expresion regular
                   pattern: {
                     value: /^[a-zA-Z0-9]{6,16}$/,
                     message: `La contraseña debe tener al menos entre 8 y 16 caracteres, NO admite caracteres especiales.`,
@@ -55,7 +52,6 @@ const Registro = () => {
                 type="email"
                 {...register("email", {
                   required: "El email es un dato obligatorio",
-                  // expresion regular
                   pattern: {
                     value:
                       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=? ^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a -z0-9](?:[a-z0-9-]*[a-z0-9])?$/,

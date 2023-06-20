@@ -7,7 +7,6 @@ const RutasAdministrador = () => {
   return (
     <Routes>
       <Route
-        // El "*" sigifica que aqui van más palabras
         path="/"
         element={<Administrador></Administrador>}
       ></Route>
